@@ -1,0 +1,18 @@
+spring:
+  main:
+    web-application-type: servlet
+  application:
+    name: co-com-pragma-api-eureka
+eureka:
+  instance:
+    hostname: dev.pragma.com.co
+  server:
+    enable-self-preservation: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+server:
+  port: 83
