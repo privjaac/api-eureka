@@ -1,0 +1,18 @@
+version: "3.5"
+services:
+  api_eureka:
+    container_name: api_eureka
+    image: ghcr.io/privjaac/co-com-pragma-api-eureka:latest
+    restart: always
+    build:
+      context: .
+      target: ghcr.io/privjaac/co-com-pragma-api-eureka:latest
+      dockerfile: Dockerfile
+    ports:
+      - "83:83"
+    networks:
+      - net_jaac
+networks:
+  net_jaac:
+    name: net_jaac
+    driver: bridge
