@@ -53,7 +53,7 @@ pipeline {
                 '''
             }
         }
-        state('disponibilidad-contenedor') {
+        stage('disponibilidad-contenedor') {
             steps {
                 sh '''
                 sleep 30s; curl -m 10 -s --head --request GET api.privjaac.com:83/actuator/health || grep \\\'"200"\\\'
