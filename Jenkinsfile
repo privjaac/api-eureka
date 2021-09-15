@@ -37,6 +37,7 @@ pipeline {
                 fi
                 image_id=$(docker images -q name=ghcr.io/privjaac/co-com-pragma-api-eureka:latest)
                 if [! -z $image_id]
+                then
                     docker rmi $image_id
                 fi
                 '''
