@@ -8,14 +8,14 @@ pipeline {
         stage('sonar-qube') {
             steps {
                 sh '''
-                echo 'aquí el codigo de simulación sonar qube'
+                echo 'simular y verificar pruebas de codigo con sonar qube.'
                 '''
             }
         }
         stage('compilar-java-test') {
             steps {
                 sh '''
-                echo 'aquí se realizan las pruebas unitarias.'
+                echo 'realizar pruebas unitarias en esta segmento.'
                 '''
             }
         }
@@ -61,7 +61,7 @@ pipeline {
         stage('disponibilidad-contenedor') {
             steps {
                 sh '''
-                sleep 30s; curl -m 10 -s --head --request GET api.privjaac.com:83/actuator/health || grep \\\'"200"\\\'
+                sleep 30s; curl -m 10 -s --head --request GET api.privjaac.com:91/actuator/health || grep \\\'"200"\\\'
                 '''
             }
         }
