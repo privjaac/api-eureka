@@ -12,14 +12,14 @@ pipeline {
                 '''
             }
         }
-        stage('compilación-java-test') {
+        stage('compilar-java-test') {
             steps {
                 sh '''
                 echo 'aquí se realizan las pruebas unitarias.'
                 '''
             }
         }
-        stage('compilación-java') {
+        stage('compilar-java') {
             steps {
                 sh '''
                 mvn clean install -Dmaven.test.skip=true
@@ -30,18 +30,21 @@ pipeline {
             steps {
                 sh '''
                 #!/bin/bash
-                #echo \\\'"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"\\\' | docker login ghcr.io -u privjaac --password-stdin
-                docker-compose -f dc-api-eureka.yml up down
-                container_id=$(docker images -q name=ghcr.io/privjaac/co-com-pragma-api-eureka:latest)
-                docker rmi $container_id
+                container_id=$(docker -aq --filter name=api_eureka)
+                if [! -z $container_id]
+                then
+                    docker-compose -f dc-api-eureka.yml up down
+                fi
+                image_id=$(docker images -q name=ghcr.io/privjaac/co-com-pragma-api-eureka:latest)
+                if [! -z $image_id]
+                    docker rmi $image_id
+                fi
                 '''
             }
         }
         stage('construir-subida-imagen') {
             steps {
                 sh '''
-                #echo \\\'"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"\\\' | docker login ghcr.io -u privjaac --password-stdin
-                #docker-compose -f dc-api-eureka.yml build
                 docker build -t ghcr.io/privjaac/co-com-pragma-api-eureka:latest .
                 docker-compose -f dc-api-eureka.yml push
                 '''
