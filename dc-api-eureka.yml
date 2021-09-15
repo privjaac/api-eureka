@@ -9,7 +9,7 @@ services:
       target: ghcr.io/privjaac/co-com-pragma-api-eureka:latest
       dockerfile: Dockerfile
     ports:
-      - "83:83"
+      - "91:91"
     networks:
       - net_jaac
 networks:

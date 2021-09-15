@@ -15,4 +15,4 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
 server:
-  port: 83
+  port: 91
