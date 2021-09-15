@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh '''
                 #!/bin/bash
-                echo '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' | docker login ghcr.io -u privjaac --password-stdin
+                echo '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' | docker login ghcr.io -u privjaac --password-stdin
                 docker-compose -f dc-api-eureka.yml up down
                 container_id=$(docker images -q name=ghcr.io/privjaac/co-com-pragma-api-eureka:latest)
                 docker rmi $container_id
@@ -40,7 +40,7 @@ pipeline {
         stage('construir-subida-imagen') {
             steps {
                 sh '''
-                echo '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' | docker login ghcr.io -u privjaac --password-stdin
+                echo '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' | docker login ghcr.io -u privjaac --password-stdin
                 #docker-compose -f dc-api-eureka.yml build
                 docker build -t ghcr.io/privjaac/co-com-pragma-api-eureka:latest .
                 docker-compose -f dc-api-eureka.yml push
