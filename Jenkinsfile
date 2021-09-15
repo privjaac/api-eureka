@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh '''
                 #!/bin/bash
-                container_id=$(docker -aq --filter name=api_eureka)
+                container_id=$(docker ps -aq --filter name=api_eureka)
                 if [! -z $container_id]
                 then
                     docker-compose -f dc-api-eureka.yml up down
