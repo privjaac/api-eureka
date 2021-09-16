@@ -29,7 +29,7 @@ pipeline {
         stage('login-docker') {
             steps {
                 sh '''
-                echo '$nexus1234$' < docker login docker.privjaac.com -u admin --password-stdin
+                docker login docker.privjaac.com -u jaac.docker -p jaac.docker
                 '''
             }
         }
