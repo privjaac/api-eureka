@@ -2,11 +2,11 @@ version: "3.5"
 services:
   api_eureka:
     container_name: api_eureka
-    image: ghcr.io/privjaac/co-com-pragma-api-eureka:latest
+    image: ocker.privjaac.com/pragma/co-com-pragma-api-eureka:latest
     restart: always
     build:
       context: .
-      target: ghcr.io/privjaac/co-com-pragma-api-eureka:latest
+      target: ocker.privjaac.com/pragma/co-com-pragma-api-eureka:latest
       dockerfile: Dockerfile
     ports:
       - "91:91"
