@@ -6,8 +6,6 @@ services:
     restart: always
     build:
       context: .
-      target: docker.privjaac.com/pragma/co-com-pragma-api-eureka:latest
-      dockerfile: Dockerfile
     ports:
       - "91:91"
     networks:

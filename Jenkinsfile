@@ -42,7 +42,6 @@ pipeline {
                 then
                     docker-compose -f dc-api-eureka.yml up down
                 fi
-                #image_id=$(docker images -q name=ghcr.io/privjaac/co-com-pragma-api-eureka:latest)
                 image_id=$(docker images -q name=docker.privjaac.com/pragma/co-com-pragma-api-eureka:latest)
                 if [! -z $image_id]
                 then
@@ -54,7 +53,8 @@ pipeline {
         stage('construir-subida-imagen') {
             steps {
                 sh '''
-                docker build -t docker.privjaac.com/pragma/co-com-pragma-api-eureka:latest .
+                #docker build -t docker.privjaac.com/pragma/co-com-pragma-api-eureka:latest .
+                docker-compose -f dc-api-eureka.yml build
                 docker-compose -f dc-api-eureka.yml push
                 '''
             }
@@ -66,10 +66,17 @@ pipeline {
                 '''
             }
         }
+        stage('logout-docker') {
+            steps {
+                sh '''
+                docker logout
+                '''
+            }
+        }
         stage('disponibilidad-contenedor') {
             steps {
                 sh '''
-                sleep 30s; curl -m 10 -s --head --request GET api.privjaac.com:91/actuator/health || grep \\\'"200"\\\'
+                sleep 25s; curl -m 10 -s --head --request GET api.privjaac.com:91/actuator/health | grep 200
                 '''
             }
         }
