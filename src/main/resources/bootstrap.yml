@@ -5,14 +5,13 @@ spring:
     name: co-com-pragma-api-eureka
 eureka:
   instance:
-    hostname: dev.pragma.com.co
+    hostname: api.privjaac.com
   server:
-    enable-self-preservation: true
+    enable-self-preservation: false
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
 server:
   port: 91

@@ -6,5 +6,3 @@ RUN mkdir -p $APP_WORKDIR
 WORKDIR $APP_WORKDIR
 COPY target/$APP_NAME.jar $APP_WORKDIR/$APP_NAME.jar
 ENTRYPOINT exec java -Djava.security.egd=file/dev/./urandom -jar $APP_WORKDIR/$APP_NAME.jar
-
-#echo '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' | docker login ghcr.io -u privjaac --password-stdin
