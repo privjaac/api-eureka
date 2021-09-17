@@ -4,7 +4,7 @@ pipeline {
         string(name: "APP_NAME", defaultValue: "co-com-pragma-api-eureka", description: "Nombre de nuestra app.")
         string(name: "APP_VERSION", defaultValue: "latest", description: "Version de nuestra app.")
         string(name: "CONTAINER_NAME", defaultValue: "api-eureka", description: "Nombre del contendor para nuestra app.")
-        string(name: "APP_HOST_NAME", defaultValue: "api.privjaac.com", description: "DNS que apunta a nuestra app.")
+        string(name: "APP_HOST_NAME", defaultValue: "eureka.privjaac.com", description: "DNS que apunta a nuestra app.")
         string(name: "APP_HOST_PORT", defaultValue: "91", description: "Puerto de arranque de nuestra app.")
         string(name: "APP_PATH", defaultValue: "", description: "Path principal de nuestra app.")
         string(name: "EUREKA_SERVER_HOST", defaultValue: "eureka.privjaac.com", description: "DNS que apunta a nuestro servidor eureka.")
