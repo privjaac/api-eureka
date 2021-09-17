@@ -88,7 +88,7 @@ pipeline {
         stage('disponibilidad-contenedor') {
             steps {
                 sh '''
-                sleep 20s; curl -m 10 -s --head --request GET ${APP_HOST_NAME}:${APP_HOST_PORT}${APP_PATH}/actuator/health | grep 200
+                sleep 30s; curl -m 10 -s --head --request GET ${APP_HOST_NAME}:${APP_HOST_PORT}${APP_PATH}/actuator/health | grep 200
                 '''
             }
         }
