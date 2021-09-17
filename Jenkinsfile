@@ -71,10 +71,11 @@ pipeline {
                 '''
             }
         }
-        stage('ejecutar-contenedor-imagen') {
+        stage('ejecutar-contenedor-imagen-prune') {
             steps {
                 sh '''
                 docker-compose -f dc-${CONTAINER_NAME}.yml up -d
+                docker image prune -f
                 '''
             }
         }
